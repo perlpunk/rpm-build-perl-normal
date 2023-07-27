@@ -68,15 +68,12 @@ foreach $module (sort keys %require) {
   } else {
 
     my $cpan_version = $require{$module};
-    my $version = $cpan_version;
-    if ($ENV{NORMAL}) {
-        $version = version->parse($cpan_version)->normal;
-    }
+    my $version = version->parse($cpan_version)->normal;
     # I am not using rpm3.0 so I do not want spaces around my
     # operators. Also I will need to change the processing of the
     # $RPM_* variable when I upgrade.
 
-    print "perl($module) = $version # $cpan_version\n";
+    print "perl($module) = $version\n";
   }
 }
 
